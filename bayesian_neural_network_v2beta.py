@@ -41,6 +41,7 @@ from matplotlib.backends import backend_agg
 import numpy as np
 import tensorflow.compat.v2 as tf
 import tensorflow_probability as tfp
+from tqdm import tqdm
 
 tf.enable_v2_behavior()
 
@@ -318,18 +319,14 @@ def main(argv):
   print(' ... Training convolutional neural network')
   for epoch in range(FLAGS.num_epochs):
     epoch_accuracy, epoch_loss = [], []
-    for step, (batch_x, batch_y) in enumerate(train_seq):
+    for step, (batch_x, batch_y) in enumerate(tqdm(train_seq)):
       batch_loss, batch_accuracy = model.train_on_batch(
           batch_x, batch_y)
       epoch_accuracy.append(batch_accuracy)
       epoch_loss.append(batch_loss)
 
-      if step % 100 == 0:
-        print('Epoch: {}, Batch index: {}, '
-              'Loss: {:.3f}, Accuracy: {:.3f}'.format(
-                  epoch, step,
-                  tf.reduce_mean(epoch_loss),
-                  tf.reduce_mean(epoch_accuracy)))
+    print('Epoch: {}, Loss: {:.3f}, Accuracy: {:.3f}'.format(epoch, tf.reduce_mean(epoch_loss),
+                                                             tf.reduce_mean(epoch_accuracy)))
 
 
 
