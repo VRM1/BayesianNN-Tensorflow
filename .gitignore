@@ -9,3 +9,4 @@ logs
 data
 trained_weights
 .ipynb_checkpoints
+*.log
