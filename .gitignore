@@ -1,4 +1,5 @@
 *.idea
+*.pyc
 *.xml
 datasets
 *.DS_Store

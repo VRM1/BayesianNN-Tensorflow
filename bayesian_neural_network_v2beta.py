@@ -39,11 +39,12 @@ matplotlib.use('Agg')
 from matplotlib import figure  # pylint: disable=g-import-not-at-top
 from matplotlib.backends import backend_agg
 import numpy as np
-import tensorflow.compat.v2 as tf
+import tensorflow as tf
+# import tensorflow.compat.v2 as tf
 import tensorflow_probability as tfp
 from tqdm import tqdm
 
-tf.enable_v2_behavior()
+# tf.enable_v2_behavior()
 
 # TODO(b/78137893): Integration tests currently fail with seaborn imports.
 warnings.simplefilter(action='ignore')
